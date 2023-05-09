@@ -1,0 +1,20 @@
+<div class="container">
+    <h1 class="text-center my-4">curso-list</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Duración</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let curso of cursoList">
+                <td>{{ curso.id }}</td>
+                <td>{{ curso.nombre }}</td>
+                <td>{{ curso.duracion }}</td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+  
