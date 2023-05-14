@@ -10,11 +10,13 @@
         </thead>
         <tbody>
             <tr *ngFor="let curso of cursoList">
-                <td>{{ curso.id }}</td>
-                <td>{{ curso.nombre }}</td>
-                <td>{{ curso.duracion }}</td>
+                <ng-container *ngIf="curso.duracion <= 4">
+                    <td>{{ curso.id }}</td>
+                    <td>{{ curso.nombre }}</td>
+                    <td>{{ curso.duracion }}</td>
+                    <td><button class="btn btn-danger btn-sm" (click)="delete(curso.id)">Borrar</button></td>
+                </ng-container>
             </tr>
         </tbody>
     </table>
-  </div>
-  
+</div>

@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Curso } from 'src/app/models/curso';
 import { CursoService } from 'src/app/services/curso.service';
-import 'jquery';
-import 'popper.js';
 
 @Component({
   selector: 'app-curso-list',
@@ -14,18 +11,29 @@ export class CursoListComponent implements OnInit{
 
   cursoList: Array<Curso>
 
-  constructor(private cursoservices: CursoService){}
+  constructor(
+    private cursoservices: CursoService){}
 
   ngOnInit(): void {
     
       this.cursoservices.getAll().subscribe(cursoresponse => {
         this.cursoList = cursoresponse
-        alert(cursoresponse)
       },error => {
         console.log(error)
       })
     
   }
-  
+
+  delete(id: number) {
+    this.cursoservices.delete(id).subscribe(() => {
+      location.reload()
+      alert('Baja Exitosa!')
+    }, error => {
+      console.error(error)
+      if (error.status === 500) {
+        alert('Error: el curso tiene inscriptos, eliminelos primero y luego vuelva a intentarlo.')
+      }
+    })
+  }
 
 }

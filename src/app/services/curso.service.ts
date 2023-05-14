@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CursoService {
-
   private url = 'http://localhost:8080/curso'
 
   constructor(private http: HttpClient) 
@@ -17,4 +16,8 @@ export class CursoService {
   getAll(): Observable<any> {
     return this.http.get(this.url + '/getAll')
   }
+
+  delete(id: number): Observable<any> {
+    return this.http.post(this.url + '/' + id + '/deleteCurso', null)
+}
 }
