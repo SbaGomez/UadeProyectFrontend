@@ -6,17 +6,50 @@
                 <th>Id</th>
                 <th>Nombre</th>
                 <th>Duración</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let curso of cursoList">
-                <ng-container *ngIf="curso.duracion <= 4">
+                <!--<ng-container *ngIf="curso.duracion <= 4">
                     <td>{{ curso.id }}</td>
                     <td>{{ curso.nombre }}</td>
                     <td>{{ curso.duracion }}</td>
                     <td><button class="btn btn-danger btn-sm" (click)="delete(curso.id)">Borrar</button></td>
-                </ng-container>
+                </ng-container>-->
+                <td>{{ curso.id }}</td>
+                <td>{{ curso.nombre }}</td>
+                <td>{{ curso.duracion }}</td>
+                <td>
+                    <button class="btn btn-danger btn-sm" (click)="delete(curso.id)">Borrar</button>
+                    <button class="btn btn-warning btn-sm" (click)="view(modalUpdate, curso)"
+                        style="margin-left: 5px;">Update</button>
+                </td>
             </tr>
         </tbody>
     </table>
 </div>
+
+<ng-template #modalUpdate let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title">curso-update</h5>
+        <button class="btn btn-danger btn-sm" aria-label="Close" (click)="modal.dismiss()">Cerrar</button>
+    </div>
+    <div class="modal-body">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="p-4 text-center">
+                    <div class="form-group mb-3">
+                        <input class="form-control" [(ngModel)]="nombre" type="text" placeholder="Nombre">
+                    </div>
+                    <div class="form-group mb-3">
+                        <input class="form-control" [(ngModel)]="duracion" type="text" placeholder="Duración">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" (click)="modal.close()">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
