@@ -1,1 +1,19 @@
-<p>curso-add works!</p>
+<div class="container">
+    <h1 class="text-center my-4">curso-add</h1>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="p-4 text-center">
+          <div class="form-group mb-3">
+            <input class="form-control" [(ngModel)]="nombre" type="text" placeholder="Nombre">
+          </div>
+          <div class="form-group mb-3">
+            <input class="form-control" [(ngModel)]="duracion" type="text" placeholder="Duración">
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary" (click)="addCurso()">Agregar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
