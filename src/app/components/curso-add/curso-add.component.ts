@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { error } from 'jquery';
 import { Curso } from 'src/app/models/curso';
 import { CursoService } from 'src/app/services/curso.service';
 

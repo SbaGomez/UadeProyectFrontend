@@ -22,7 +22,7 @@ export class CursoService {
   }
 
   add(curso: Curso): Observable<any> {
-    return this.http.post(this.url, curso)
+    return this.http.post(this.url + '/addCurso', curso)
   }
 
   edit(curso: Curso): Observable<any> {

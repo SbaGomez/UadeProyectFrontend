@@ -1,0 +1,19 @@
+.close {
+    position: absolute;
+    right: 10px;
+    padding: 0.5rem;
+    background-color: #f8f9fa;
+    border: none;
+    color: #000;
+    font-size: 2rem;
+    transition: color 0.3s;
+    border-radius: 50%;
+  }
+  
+  .close:hover {
+    color: #ff0000;
+  }
+  
+  .close:focus {
+    outline: none;
+  }
