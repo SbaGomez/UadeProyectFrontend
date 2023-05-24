@@ -3,6 +3,7 @@ import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Curso } from 'src/app/models/curso';
 import { CursoService } from 'src/app/services/curso.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-curso-add',
@@ -19,7 +20,7 @@ export class CursoAddComponent {
   public mensajeError: string = '';
   public mensajeTitulo: string = '';
 
-  constructor(private formBuilder: FormBuilder, private cursoservices: CursoService, private modalService: NgbModal) {
+  constructor(private router: Router,private formBuilder: FormBuilder, private cursoservices: CursoService, private modalService: NgbModal) {
     this.cursoForm = this.formBuilder.group({
       nombre: ['', Validators.required],
       duracion: ['', Validators.required]
@@ -81,7 +82,7 @@ export class CursoAddComponent {
     this.modalService.open(this.modalAdd).result.then(
       (result) => {
         if (result === 'close') {
-          location.reload();
+          this.router.navigate(['/app-curso-list']);
         }
       },
       (reason) => {
