@@ -1,0 +1,35 @@
+.container {
+    background-color: #eff5e6;
+    padding: 20px;
+    border-radius: 10px;
+    width: 500px;
+  }
+
+  .text-danger {
+    color: #b83e4a;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    margin-top: 5px;
+  }
+
+  .close {
+    position: absolute;
+    right: 10px;
+    padding: 0.5rem;
+    background-color: #f8f9fa;
+    border: none;
+    color: #000;
+    font-size: 2rem;
+    transition: color 0.3s;
+    border-radius: 50%;
+  }
+  
+  .close:hover {
+    color: #ff0000;
+  }
+  
+  .close:focus {
+    outline: none;
+  }

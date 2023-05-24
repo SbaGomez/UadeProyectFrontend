@@ -1,26 +1,37 @@
-<form [formGroup]="cursoForm">
-  <div class="container-sm">
+<div class="container container-sm">
+  <form [formGroup]="cursoForm">
     <h1 class="text-center my-4">curso-add</h1>
     <div class="row justify-content-center">
-      <div class="col-md-6">
-        <div class="p-4 text-center">
-          <div class="form-group mb-3">
-            <input class="form-control" formControlName="nombre" type="text" placeholder="Nombre">
-            <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
-              <p *ngIf="nombre.errors['required']" style="font-size: small; color: red">campo obligatorio</p>
-            </div>
+      <div class="p-4 text-center">
+        <div class="form-group mb-3">
+          <input class="form-control" formControlName="nombre" type="text" placeholder="Nombre">
+          <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+            <p class="text-danger" *ngIf="nombre.errors?.['required']">Campo obligatorio</p>
           </div>
-          <div class="form-group mb-3">
-            <input class="form-control" formControlName="duracion" type="text" placeholder="Duración">
-            <div *ngIf="duracion.invalid && (nombre.dirty || nombre.touched)">
-              <p *ngIf="duracion.errors['required']" style="font-size: small; color: red">campo obligatorio</p>
-            </div>
+        </div>
+        <div class="form-group mb-3">
+          <input class="form-control" formControlName="duracion" type="text" placeholder="Duración">
+          <div *ngIf="duracion.invalid && (duracion.dirty || duracion.touched)">
+            <p class="text-danger" *ngIf="nombre.errors?.['required']">Campo obligatorio</p>
           </div>
-          <div class="form-group">
-            <button class="btn btn-primary" (click)="addCurso()">Agregar</button>
-          </div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary" (click)="addCurso()">Agregar</button>
         </div>
       </div>
     </div>
+  </form>
+</div>
+
+
+<ng-template #modalAdd let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title">Exitoso</h5>
+    <button class="close" aria-label="Close" (click)="modal.close('close')">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
-</form>
+  <div *ngIf="mensajeExito" class="text-success text-center p-4">
+    <h2>{{ mensajeExito }}</h2>
+  </div>
+</ng-template>
