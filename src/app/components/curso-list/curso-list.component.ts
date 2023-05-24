@@ -30,12 +30,12 @@ export class CursoListComponent implements OnInit {
 
   view(updateModal: any, curso: Curso) {
       this.nombre = curso.nombre
-      this.duracion = curso.duracion
+      this.duracion = curso.duracion.toString();
       this.modalService.open(updateModal).result.then(() => {
         if(this.nombre.trim() !== '' && this.duracion.trim() !== '')
         {
           curso.nombre = this.nombre;
-          curso.duracion = this.duracion;
+          curso.duracion = parseInt(this.duracion);
           this.cursoservices.edit(curso).subscribe(() => {
             location.reload();
           }, error => {

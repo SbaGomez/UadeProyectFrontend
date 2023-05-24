@@ -7,7 +7,7 @@ import { CursoListComponent } from './components/curso-list/curso-list.component
 import { PerfilListComponent } from './components/perfil-list/perfil-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CursoAddComponent } from './components/curso-add/curso-add.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,6 +21,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     NgbModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     FormsModule
   ],
   providers: [],
