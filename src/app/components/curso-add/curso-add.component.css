@@ -43,3 +43,19 @@
 .close:focus {
   outline: none;
 }
+
+.input-icon {
+  position: relative;
+}
+
+.input-icon input {
+  padding-right: 30px; /* Ajusta este valor según sea necesario para evitar que el icono se superponga con el texto */
+}
+
+.input-icon i {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  color: #888; /* Puedes cambiar el color del icono según tus preferencias */
+}

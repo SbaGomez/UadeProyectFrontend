@@ -4,7 +4,10 @@
     <div class="row justify-content-center">
       <div class="p-4 text-center">
         <div class="form-group mb-3">
-          <input class="form-control" formControlName="nombre" type="text" placeholder="Nombre">
+          <div class="input-icon">
+            <input class="form-control" formControlName="nombre" type="text" maxlength="2" placeholder="Nombre">
+            <i class="fas fa-user"></i>
+          </div>
           <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
             <p class="text-danger" *ngIf="nombre.errors?.['required']">
               <i class="fas fa-times error-icon"></i> Completar Campo obligatorio
@@ -12,7 +15,10 @@
           </div>
         </div>
         <div class="form-group mb-3">
-          <input class="form-control" formControlName="duracion" type="text" maxlength="2" placeholder="Duración">
+          <div class="input-icon">
+            <input class="form-control" formControlName="duracion" type="text" maxlength="2" placeholder="Duración">
+            <i class="fas fa-clock"></i>
+          </div>
           <div *ngIf="duracion.invalid && (duracion.dirty || duracion.touched)">
             <p class="text-danger" *ngIf="duracion.errors?.['required']">
               <i class="fas fa-times error-icon"></i> Completar Campo obligatorio
