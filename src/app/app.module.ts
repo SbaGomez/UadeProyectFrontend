@@ -8,13 +8,14 @@ import { PerfilListComponent } from './components/perfil-list/perfil-list.compon
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CursoAddComponent } from './components/curso-add/curso-add.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import * as $ from 'jquery';
 
 @NgModule({
   declarations: [
     AppComponent,
     CursoListComponent,
     PerfilListComponent,
-    CursoAddComponent
+    CursoAddComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,7 +25,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    { provide: 'jQuery', useValue: $ }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
