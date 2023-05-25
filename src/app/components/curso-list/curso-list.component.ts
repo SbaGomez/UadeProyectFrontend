@@ -22,7 +22,7 @@ export class CursoListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.titleService.setTitle('Home');
+    this.titleService.setTitle('Curso List');
     this.cursoservices.getAll().subscribe(cursoresponse => {
       this.cursoList = cursoresponse
     }, error => {
