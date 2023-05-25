@@ -1,11 +1,11 @@
-<div class="container container-sm mt-4">
+<div class="container bg-dark mt-4">
   <form [formGroup]="cursoForm">
-    <h1 class="text-center my-4">curso-add</h1>
-    <div class="row justify-content-center">
-      <div class="p-4 text-center">
+    <h1 class="text-center text-light my-4">curso-add</h1>
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-8 col-md-8 col-sm-10">
         <div class="form-group mb-3">
           <div class="input-icon">
-            <input class="form-control" formControlName="nombre" type="text" maxlength="2" placeholder="Nombre">
+            <input class="form-control form-control-sm w-100 dark-input" formControlName="nombre" type="text" placeholder="Nombre">
             <i class="fas fa-user"></i>
           </div>
           <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
@@ -16,7 +16,7 @@
         </div>
         <div class="form-group mb-3">
           <div class="input-icon">
-            <input class="form-control" formControlName="duracion" type="text" maxlength="2" placeholder="Duración">
+            <input class="form-control form-control-sm w-100 dark-input" formControlName="duracion" type="text" maxlength="2" placeholder="Duración">
             <i class="fas fa-clock"></i>
           </div>
           <div *ngIf="duracion.invalid && (duracion.dirty || duracion.touched)">
@@ -31,13 +31,11 @@
         <div class="form-group">
           <button class="btn btn-primary" (click)="addCurso()">Agregar</button>
         </div>
-        <!-- <div *ngIf="mensajeError" class="text-danger text-center p-4">
-          <p>{{ mensajeError }}</p>
-        </div> -->
       </div>
     </div>
   </form>
 </div>
+
 
 <ng-template #modalAdd let-modal>
   <div class="modal-header">

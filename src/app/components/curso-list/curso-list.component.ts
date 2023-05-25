@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Curso } from 'src/app/models/curso';
 import { CursoService } from 'src/app/services/curso.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-curso-list',
@@ -16,10 +17,12 @@ export class CursoListComponent implements OnInit {
 
   constructor(
     private cursoservices: CursoService,
-    private modalService: NgbModal) { }
+    private modalService: NgbModal,
+    private titleService: Title) { }
 
   ngOnInit(): void {
 
+    this.titleService.setTitle('Home');
     this.cursoservices.getAll().subscribe(cursoresponse => {
       this.cursoList = cursoresponse
     }, error => {
@@ -29,20 +32,19 @@ export class CursoListComponent implements OnInit {
   }
 
   view(updateModal: any, curso: Curso) {
-      this.nombre = curso.nombre
-      this.duracion = curso.duracion.toString();
-      this.modalService.open(updateModal).result.then(() => {
-        if(this.nombre.trim() !== '' && this.duracion.trim() !== '')
-        {
-          curso.nombre = this.nombre;
-          curso.duracion = parseInt(this.duracion);
-          this.cursoservices.edit(curso).subscribe(() => {
-            location.reload();
-          }, error => {
-            console.error(error)
-          })
-        }
-      })
+    this.nombre = curso.nombre
+    this.duracion = curso.duracion.toString();
+    this.modalService.open(updateModal).result.then(() => {
+      if (this.nombre.trim() !== '' && this.duracion.trim() !== '') {
+        curso.nombre = this.nombre;
+        curso.duracion = parseInt(this.duracion);
+        this.cursoservices.edit(curso).subscribe(() => {
+          location.reload();
+        }, error => {
+          console.error(error)
+        })
+      }
+    })
   }
 
   delete(id: number) {

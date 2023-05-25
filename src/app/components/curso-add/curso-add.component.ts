@@ -4,6 +4,7 @@ import { Curso } from 'src/app/models/curso';
 import { CursoService } from 'src/app/services/curso.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-curso-add',
@@ -20,14 +21,19 @@ export class CursoAddComponent {
   public mensajeError: string = '';
   public mensajeTitulo: string = '';
 
-  constructor(private router: Router,private formBuilder: FormBuilder, private cursoservices: CursoService, private modalService: NgbModal) {
+  constructor(private router: Router,
+    private formBuilder: FormBuilder,
+    private cursoservices: CursoService,
+    private modalService: NgbModal,
+    private titleService: Title) {
     this.cursoForm = this.formBuilder.group({
       nombre: ['', Validators.required],
       duracion: ['', Validators.required]
     });
-   }
+  }
 
   ngOnInit() {
+    this.titleService.setTitle('Curso Add');
     this.curso.nombre = "";
     this.curso.duracion = 0;
     this.cursoForm = new FormGroup({
@@ -36,7 +42,7 @@ export class CursoAddComponent {
         updateOn: 'blur'
       }),
       duracion: new FormControl(this.curso.duracion || '', {
-        validators: [Validators.required,Validators.pattern('^[0-9]*$'),Validators.maxLength(2)],
+        validators: [Validators.required, Validators.pattern('^[0-9]*$'), Validators.maxLength(2)],
         updateOn: 'blur'
       })
     });
@@ -79,8 +85,11 @@ export class CursoAddComponent {
 
 
   openModal() {
-    this.modalService.open(this.modalAdd).result.then(
+    const modalRef = this.modalService.open(this.modalAdd);
+
+    modalRef.result.then(
       (result) => {
+        // Manejar cierre del modal
         if (result === 'close') {
           this.router.navigate(['/app-curso-list']);
         }
@@ -89,6 +98,11 @@ export class CursoAddComponent {
         // Manejar cualquier error o rechazo del modal si es necesario
       }
     );
+
+    // Agregar evento hidden para redirigir al hacer clic fuera del modal
+    modalRef.hidden.subscribe(() => {
+      this.router.navigate(['/app-curso-list']);
+    });
   }
 
 

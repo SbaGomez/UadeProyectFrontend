@@ -2,12 +2,18 @@
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
-  width: 500px;
+  max-width: 500px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+.dark-input {
+  background-color: #333;
+  color: #fff;
+  border-color: #555;
+}
+
 .text-danger {
-  color: #b41825 !important;
+  color: #d4646d !important;
   font-size: 11px;
   font-weight: 700;
   font-family: Arial, Helvetica, sans-serif;
@@ -18,10 +24,10 @@
 }
 
 .error-icon{
-  color: #000;
+  color: #daa30d;
   font-weight: 900;
   margin-right: 5px;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .close {
@@ -34,6 +40,8 @@
   font-size: 2rem;
   transition: color 0.3s;
   border-radius: 50%;
+  height: 62px;
+  line-height: 30px;
 }
 
 .close:hover {
