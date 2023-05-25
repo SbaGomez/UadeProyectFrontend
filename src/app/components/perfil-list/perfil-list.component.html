@@ -18,7 +18,9 @@
         <td>{{ perfil.nombre }}</td>
         <td>{{ perfil.apellido }}</td>
         <td>{{ perfil.dni }}</td>
-        <td>{{ perfil.sexo }}</td>
+        <td>
+          <span [ngClass]="{'fa': true, 'fa-mars': perfil.sexo === 'M', 'fa-venus': perfil.sexo === 'F', 'text-primary': perfil.sexo === 'M', 'text-girl': perfil.sexo === 'F'}"></span>
+        </td>
         <td>{{ perfil.edad }}</td>
         <td>
           <div class="row">

@@ -46,3 +46,7 @@
   transform: translateY(-50%);
   color: #888; /* Puedes cambiar el color del icono según tus preferencias */
 }
+
+.text-girl{
+  color: pink;
+}
