@@ -13,14 +13,6 @@ import { Title } from '@angular/platform-browser';
 })
 export class CursoAddComponent {
 
-  @ViewChild('modalAdd') modalAdd: any;
-  curso = new Curso();
-  cursoForm: FormGroup;
-
-  public mensajeExito: string = '';
-  public mensajeError: string = '';
-  public mensajeTitulo: string = '';
-
   constructor(private router: Router,
     private formBuilder: FormBuilder,
     private cursoservices: CursoService,
@@ -31,6 +23,16 @@ export class CursoAddComponent {
       duracion: ['', Validators.required]
     });
   }
+
+  public mensajeExito: string = '';
+  public mensajeError: string = '';
+  public mensajeTitulo: string = '';
+
+  @ViewChild('modalAdd') modalAdd: any;
+  curso = new Curso();
+  cursoForm: FormGroup;
+
+
 
   ngOnInit() {
     this.titleService.setTitle('Curso Add');
@@ -83,7 +85,6 @@ export class CursoAddComponent {
     }
   }
 
-
   openModal() {
     const modalRef = this.modalService.open(this.modalAdd);
 
@@ -104,6 +105,5 @@ export class CursoAddComponent {
       this.router.navigate(['/app-curso-list']);
     });
   }
-
 
 }

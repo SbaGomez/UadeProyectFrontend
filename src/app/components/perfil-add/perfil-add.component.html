@@ -1,0 +1,96 @@
+<div class="container bg-dark mt-4">
+    <form [formGroup]="perfilForm">
+        <h1 class="text-center text-light my-4">curso-add</h1>
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-8 col-md-8 col-sm-10">
+                <div class="form-group mb-3">
+                    <div class="input-icon">
+                        <input class="form-control form-control-sm w-100 dark-input" formControlName="nombre"
+                            type="text" placeholder="Nombre">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                        <p class="text-danger" *ngIf="nombre.errors?.['required']">
+                            <i class="fas fa-times error-icon"></i> Completar Campo obligatorio
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <div class="input-icon">
+                        <input class="form-control form-control-sm w-100 dark-input" formControlName="apellido"
+                            type="text" placeholder="Apellido">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
+                        <p class="text-danger" *ngIf="apellido.errors?.['required']">
+                            <i class="fas fa-times error-icon"></i> Completar Campo obligatorio
+                        </p>
+                        <p class="text-danger" *ngIf="apellido.errors?.['pattern']">
+                            <i class="fas fa-times error-icon"></i> Ingrese solo números
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <div class="input-icon">
+                        <input class="form-control form-control-sm w-100 dark-input" formControlName="dni" type="text"
+                            maxlength="8" placeholder="DNI">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <div *ngIf="dni.invalid && (dni.dirty || dni.touched)">
+                        <p class="text-danger" *ngIf="dni.errors?.['required']">
+                            <i class="fas fa-times error-icon"></i> Completar Campo obligatorio
+                        </p>
+                        <p class="text-danger" *ngIf="dni.errors?.['pattern']">
+                            <i class="fas fa-times error-icon"></i> Ingrese solo números
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group mb-3 text-center">
+                    <div class="form-check d-flex justify-content-center align-items-center">
+                        <input class="form-check-input me-2 dark-input" type="radio" name="sexo" id="masculino"
+                            formControlName="sexo" value="M">
+                        <label class="form-check-label text-light" for="masculino">Masculino</label>
+                    </div>
+                </div>
+                <div class="form-group mb-3 text-center">
+                    <div class="form-check d-flex justify-content-center align-items-center">
+                        <input class="form-check-input me-2 dark-input" type="radio" name="sexo" id="femenino"
+                            formControlName="sexo" value="F">
+                        <label class="form-check-label text-light" for="femenino">Femenino</label>
+                    </div>
+                </div>
+                <div class="form-group mb-3">
+                    <div class="input-icon">
+                        <input class="form-control form-control-sm w-100 dark-input" formControlName="edad" type="text"
+                            maxlength="3" placeholder="Edad">
+                        <i class="fas fa-id-badge"></i>
+                    </div>
+                    <div *ngIf="edad.invalid && (edad.dirty || edad.touched)">
+                        <p class="text-danger" *ngIf="edad.errors?.['required']">
+                            <i class="fas fa-times error-icon"></i> Completar Campo obligatorio
+                        </p>
+                        <p class="text-danger" *ngIf="edad.errors?.['pattern']">
+                            <i class="fas fa-times error-icon"></i> Ingrese solo números
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" (click)="addPerfil()">Crear Perfil</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<ng-template #modalAdd let-modal>
+    <div class="modal-header">
+        <h5 class="modal-title">{{ mensajeTitulo }}</h5>
+        <button class="close" aria-label="Close" (click)="modal.close('close')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div *ngIf="mensajeExito" class="text-success text-center p-4">
+        <h3>{{ mensajeExito }}</h3>
+    </div>
+</ng-template>
