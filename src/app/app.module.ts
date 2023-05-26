@@ -9,6 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CursoAddComponent } from './components/curso-add/curso-add.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
+import { PerfilAddComponent } from './components/perfil-add/perfil-add.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { HomeComponent } from './components/home/home.component';
     PerfilListComponent,
     CursoAddComponent,
     HomeComponent,
+    PerfilAddComponent,
   ],
   imports: [
     BrowserModule,

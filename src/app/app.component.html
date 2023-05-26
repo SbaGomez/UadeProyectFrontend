@@ -10,14 +10,40 @@
                 <li class="nav-item active">
                     <a class="nav-link" routerLink="/app-home">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
+                <!--  <li class="nav-item">
                     <a class="nav-link" routerLink="/app-curso-add">Add Curso</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/app-curso-list">Curso List</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" routerLink="/app-perfil-add">Add Perfil</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" routerLink="/app-perfil-list">Perfil List</a>
+                </li> -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Curso
+                    </a>
+
+                    <ul class="dropdown-menu bg-dark">
+                        <li><a class="dropdown-item bg-dark text-light" routerLink="/app-curso-add">Add Curso</a></li>
+                        <li><a class="dropdown-item bg-dark text-light" routerLink="/app-curso-list">Curso List</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Perfil
+                    </a>
+
+                    <ul class="dropdown-menu bg-dark">
+                        <li><a class="dropdown-item bg-dark text-light" routerLink="/app-perfil-add">Add Perfil</a></li>
+                        <li><a class="dropdown-item bg-dark text-light" routerLink="/app-perfil-list">Perfil List</a></li>
+                    </ul>
                 </li>
             </ul>
         </div>
