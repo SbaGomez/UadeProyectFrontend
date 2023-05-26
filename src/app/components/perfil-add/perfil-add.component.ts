@@ -57,7 +57,7 @@ export class PerfilAddComponent implements OnInit {
       }),
       sexo: new FormControl(this.perfil.sexo, {
         validators: [Validators.required, Validators.maxLength(1)],
-        updateOn: 'blur'
+        updateOn: 'submit'
       }),
       dni: new FormControl(this.perfil.dni || '', {
         validators: [Validators.required, Validators.pattern('^[0-9]*$'), Validators.maxLength(8)],
@@ -134,6 +134,13 @@ export class PerfilAddComponent implements OnInit {
     modalRef.hidden.subscribe(() => {
       this.router.navigate(['/app-perfil-list']);
     });
+  }
+
+  onSubmit() {
+    this.perfilForm.markAllAsTouched();
+    if (this.perfilForm.valid) {
+      // Lógica adicional para enviar el formulario
+    }
   }
 
 }

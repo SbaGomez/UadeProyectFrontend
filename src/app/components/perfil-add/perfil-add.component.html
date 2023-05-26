@@ -1,5 +1,5 @@
 <div class="container bg-dark mt-4">
-    <form [formGroup]="perfilForm">
+    <form [formGroup]="perfilForm" (ngSubmit)="onSubmit()">
         <h1 class="text-center text-light my-4">curso-add</h1>
         <div class="row justify-content-center text-center">
             <div class="col-lg-8 col-md-8 col-sm-10">
@@ -58,6 +58,11 @@
                             formControlName="sexo" value="F">
                         <label class="form-check-label text-light" for="femenino">Femenino</label>
                     </div>
+                    <div *ngIf="sexo.invalid && (sexo.dirty || sexo.touched)">
+                        <p class="text-danger" *ngIf="sexo.errors?.['required']">
+                            <i class="fas fa-times error-icon"></i> Debe seleccionar un sexo
+                        </p>
+                    </div>
                 </div>
                 <div class="form-group mb-3">
                     <div class="input-icon">
@@ -75,7 +80,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <button class="btn btn-primary" (click)="addPerfil()">Crear Perfil</button>
+                    <button class="btn btn-primary" type="submit" (click)="addPerfil()">Crear Perfil</button>
                 </div>
             </div>
         </div>
