@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { Perfil } from 'src/app/models/perfil';
 import { PerfilService } from 'src/app/services/perfil.service';
+import { Curso } from 'src/app/models/curso';
+import { CursoService } from 'src/app/services/curso.service';
 
 @Component({
   selector: 'app-perfil-add',
@@ -15,6 +17,7 @@ export class PerfilAddComponent implements OnInit {
 
   constructor(private router: Router,
     private formBuilder: FormBuilder,
+    private cursoservices: CursoService,
     private perfilservices: PerfilService,
     private modalService: NgbModal,
     private titleService: Title) {
@@ -32,7 +35,9 @@ export class PerfilAddComponent implements OnInit {
   public mensajeTitulo: string = '';
 
   @ViewChild('modalAdd') modalAdd: any;
+  cursoList: Array<Curso>
   perfil = new Perfil();
+  cursoId
   perfilForm: FormGroup;
 
   ngOnInit() {
@@ -42,6 +47,7 @@ export class PerfilAddComponent implements OnInit {
     this.perfil.edad = 0;
     this.perfil.sexo = "";
     this.perfil.dni = 0;
+    this.perfil.cursos = [];
     this.perfilForm = new FormGroup({
       nombre: new FormControl(this.perfil.nombre, {
         validators: [Validators.required],
@@ -62,9 +68,20 @@ export class PerfilAddComponent implements OnInit {
       dni: new FormControl(this.perfil.dni || '', {
         validators: [Validators.required, Validators.pattern('^[0-9]*$'), Validators.maxLength(8)],
         updateOn: 'blur'
+      }),
+      cursoObject: new FormControl(this.cursoId || '', {
+        validators: [Validators.required, Validators.pattern('^[0-9]*$'), Validators.maxLength(8)],
+        updateOn: 'blur'
       })
     });
     document.getElementsByTagName('input')[0].focus()
+
+    this.cursoservices.getAll().subscribe(cursoresponse => {
+      this.cursoList = cursoresponse
+    }, error => {
+      console.log(error)
+    })
+    
   }
 
   get nombre() {
@@ -82,6 +99,9 @@ export class PerfilAddComponent implements OnInit {
   get dni() {
     return this.perfilForm.get('dni');
   }
+  get cursoObject() {
+    return this.perfilForm.get('cursoObject');
+  }
 
   addPerfil() {
     if (this.perfilForm.valid) {
@@ -91,13 +111,14 @@ export class PerfilAddComponent implements OnInit {
       perfil.edad = this.edad.value;
       perfil.sexo = this.sexo.value;
       perfil.dni = this.dni.value;
-      this.perfilservices.add(perfil).subscribe(
+      this.perfilservices.add(this.cursoObject.value, perfil).subscribe(
         () => {
           this.nombre.setValue('');
           this.apellido.setValue('');
           this.edad.setValue('');
           this.sexo.setValue('');
           this.dni.setValue('');
+          this.cursoObject.setValue('');
           document.getElementsByTagName('input')[0].focus();
         },
         (error) => {

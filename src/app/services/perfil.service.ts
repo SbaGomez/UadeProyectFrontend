@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Perfil } from '../models/perfil'
+import { Curso } from '../models/curso';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +20,8 @@ export class PerfilService {
     return this.http.post(this.url + '/' + id + '/deletePerfil', null)
   }
 
-  add(perfil: Perfil): Observable<any> {
-    return this.http.post(this.url + '/addPerfil', perfil)
+  add(id: number, perfil: Perfil): Observable<any> {
+    return this.http.post(this.url + '/' + id + '/addPerfil', perfil)
   }
 
   edit(perfil: Perfil): Observable<any> {

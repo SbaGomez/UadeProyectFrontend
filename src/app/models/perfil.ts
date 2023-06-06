@@ -1,3 +1,5 @@
+import { Curso } from "./curso"
+
 export class Perfil {
     id: number
     nombre: string
@@ -5,4 +7,5 @@ export class Perfil {
     dni: number
     sexo: string
     edad: number
+    cursos: Array<Curso>
 }
